@@ -60,7 +60,9 @@
 	&__price {
 		display: flex;
 		gap: 1rem;
+		margin-left: 2rem;
 		align-items: center;
+		justify-items: center;
 		font-size: 1.5rem;
 		svg {
 			fill: $color-primary;

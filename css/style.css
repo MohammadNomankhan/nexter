@@ -8,6 +8,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 50%; } }
 
 body {
   font-family: "Nunito", sans-serif;
@@ -19,6 +22,13 @@ body {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
+  @media only screen and (max-width: 62.5em) {
+    .container {
+      grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+      grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; } }
+  @media only screen and (max-width: 50em) {
+    .container {
+      grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content 40vw repeat(3, min-content); } }
 
 .heading-1, .heading-2, .heading-3, .heading-4 {
   font-family: "Josefin Sans", sans-serif;
@@ -49,6 +59,8 @@ body {
   font-size: 1.9rem; }
   .heading-4--dark {
     color: #54483A; }
+  .heading-4--light {
+    color: #f9f7f6; }
 
 .btn {
   background-color: #c69963;
@@ -89,6 +101,13 @@ body {
   grid-row: 1/-1;
   display: flex;
   justify-content: center; }
+  @media only screen and (max-width: 62.5em) {
+    .sidebar {
+      grid-column: 1 / -1;
+      grid-row: 1/2;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; } }
 
 .btn-nav {
   border-radius: 0;
@@ -104,9 +123,13 @@ body {
     content: "";
     display: block; }
   .btn-nav::before {
-    transform: translateY(-1.5rem); }
+    transform: translateY(-1.2rem); }
   .btn-nav::after {
-    transform: translateY(1.3rem); }
+    transform: translateY(1rem); }
+  @media only screen and (max-width: 62.5em) {
+    .btn-nav {
+      margin-top: 0;
+      margin-right: 3rem; } }
 
 .header {
   grid-column: full-start/col-end 6;
@@ -116,10 +139,13 @@ body {
   padding: 8rem;
   padding-top: 4rem;
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(min-content, 6rem) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
   justify-content: center;
   row-gap: 1.5rem; }
+  @media only screen and (max-width: 50em) {
+    .header {
+      grid-column: full-start/full-end; } }
   .header__logo {
     height: 3rem;
     justify-self: center; }
@@ -142,14 +168,45 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 3rem;
-    justify-items: center; }
+    justify-items: center;
+    align-items: center; }
     .header__seenon-logos img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       filter: brightness(70%); }
 
 .realtors {
   background-color: #101d2c;
-  grid-column: col-start 7/full-end; }
+  grid-column: col-start 7/full-end;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  row-gap: 2rem; }
+  @media only screen and (max-width: 50em) {
+    .realtors {
+      grid-column: full-start /full-end;
+      padding: 3rem; } }
+  .realtors__img {
+    height: 7rem;
+    border-radius: 50%;
+    display: block; }
+  .realtors__list {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    column-gap: 2rem;
+    row-gap: 5vh;
+    align-items: center; }
+    @media only screen and (max-width: 50em) {
+      .realtors__list {
+        grid-template-columns: repeat(3, min-content max-content); } }
+  @media only screen and (max-width: 50em) {
+    .realtors__details {
+      margin-left: -1rem; } }
+  .realtors__sold {
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: -3px; }
 
 .features {
   grid-column: center-start/center-end;
@@ -250,7 +307,9 @@ body {
   .home__location, .home__rooms, .home__area, .home__price {
     display: flex;
     gap: 1rem;
+    margin-left: 2rem;
     align-items: center;
+    justify-items: center;
     font-size: 1.5rem; }
     .home__location svg, .home__rooms svg, .home__area svg, .home__price svg {
       fill: #c69963;
